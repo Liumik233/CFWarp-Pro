@@ -97,8 +97,10 @@ Instal_WARP_Client_Debian() {
 
 Instal_WARP_Client_Ubuntu() {
     Install_Requirements_Debian
+    wget http://pkg.cloudflareclient.com/pool/main/cloudflare_warp_2021_6_1_1_amd64_09b03be4bb_amd64.deb
+    dpkg -i cloudflare_warp_2021_6_1_1_amd64_09b03be4bb_amd64.deb
     curl https://pkg.cloudflareclient.com/pubkey.gpg | apt-key add -
-    #echo "deb http://pkg.cloudflareclient.com/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/cloudflare-client.list
+    echo "deb http://pkg.cloudflareclient.com/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/cloudflare-client.list
     echo "deb http://pkg.cloudflareclient.com/ focal main" | tee /etc/apt/sources.list.d/cloudflare-client.list
     apt update
     apt install cloudflare-warp -y
